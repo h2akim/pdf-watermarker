@@ -16,5 +16,6 @@
         {
             "PdfWatermarker\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
