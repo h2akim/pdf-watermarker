@@ -1,5 +1,5 @@
 {
-    "name": "h2akim/pdf-watermarker",
+    "name": "h2akim/pdfwatermarker",
     "description": "PDF Watermarking Package",
     "require": {
         "setasign/fpdi-fpdf": "^2.0"
