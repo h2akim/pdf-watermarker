@@ -117,7 +117,8 @@ class Watermarker {
 		$this->watermarkWholePdf();
 		if ($this->replaceOriginal && file_exists($this->originalPdf)) {
 			try {
-				unlink($this->originalPdf);
+				@chmod($this->originalPdf, 0777);
+				@unlink($this->originalPdf);
 				$this->newPdf = $this->originalPdf;
 			} catch (\Exception $e) {
 				throw new \Exception('No permission to replace file');
