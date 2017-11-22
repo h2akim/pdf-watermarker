@@ -11,13 +11,15 @@ class Watermarker {
 	private $tempPdf;
 	private $watermark;
 	private $imagePositionOutput;
+	private $replaceOriginal;
 	
-	public function __construct($originalPdf, $newPdf, $watermark, $position) {
+	public function __construct($originalPdf, $newPdf, $watermark, $position, $replaceOriginal) {
 		
 		$this->originalPdf = $originalPdf;
 		$this->newPdf = $newPdf;
 		$this->tempPdf = new Fpdi();
 		$this->watermark = $watermark;
+		$this->replaceOriginal = $replaceOriginal;
 		
 		$this->validateAssets();
 		$this->setWatermarkPosition($position);
@@ -113,6 +115,14 @@ class Watermarker {
 	
 	public function watermarkPdf() {
 		$this->watermarkWholePdf();
+		if ($this->replaceOriginal && file_exists($this->originalPdf)) {
+			try {
+				unlink($this->originalPdf);
+				$this->newPdf = $this->originalPdf;
+			} catch (\Exception $e) {
+				throw new \Exception('No permission to replace file');
+			}
+		}
 		return $this->tempPdf->Output('F', $this->newPdf);
 	}
 
