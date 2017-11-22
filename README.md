@@ -1,4 +1,4 @@
-PHP Watermarker
+PHP PDF Watermarker
 ===================
 Installation
 -------------
