@@ -6,7 +6,6 @@ use setasign\Fpdi\Fpdi;
 
 class Watermarker {
 
-    
 	private $originalPdf;
 	private $newPdf;
 	private $tempPdf;
@@ -27,10 +26,10 @@ class Watermarker {
 	private function validateAssets() {
 		
 		if ( !file_exists( $this->originalPdf ) ) {
-			throw new Exception("Inputted PDF file doesn't exist");
+			throw new \Exception("Inputted PDF file doesn't exist");
 		}
 		else if ( !file_exists( $this->watermark->getFilePath() ) ) {
-			throw new Exception("Watermark doesn't exist.");
+			throw new \Exception("Watermark doesn't exist.");
 		}
 		
 	}
@@ -71,7 +70,7 @@ class Watermarker {
 			$orientation = 'P';
 		}
 		
-		$this->tempPdf->addPage('P',array($templateDimension['width'],$templateDimension['height']));
+		$this->tempPdf->addPage($orientation,array($templateDimension['width'],$templateDimension['height']));
 		$this->tempPdf->useTemplate($templateId);
 		
 		$wWidth = ($this->watermark->getWidth() / 96) * 25.4; //in mm

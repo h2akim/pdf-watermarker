@@ -16,6 +16,9 @@ class Watermark {
 	
 	private function prepareWatermarkImage($file) {
 		
+		if ( !file_exists( $file ) ) {
+			throw new \Exception("Watermark doesn't exist.");
+		}
 		$imagetype = exif_imagetype($file);
 		
 		switch($imagetype) {
@@ -37,7 +40,7 @@ class Watermark {
 				imagedestroy($image);
 				break;
 			default:
-				throw new Exception("Unsupported image type");
+				throw new \Exception("Unsupported image type");
 				break;
 		};
 		

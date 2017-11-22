@@ -4,7 +4,7 @@ Installation
 -------------
 
 ```bash
-composer require h2akim\pdfwatermarker
+composer require h2akim/pdfwatermarker:dev-master
 ```
 
 Usage
