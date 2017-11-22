@@ -19,7 +19,7 @@ $watermarker = new PdfWatermarker(
                 'input.pdf', // input
                 'output.pdf', // output
                 'watermark.png', // watermark file
-                'center', // watermark position
+                'center', // watermark position (topleft, topright, bottomleft, bottomright, center)
                 true // set to true - replace original input file
                );
 $watermarker->create();
